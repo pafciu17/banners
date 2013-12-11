@@ -1,0 +1,67 @@
+<div>
+<h3>Contents</h3>
+
+	<div class="row">
+		<p class="col-md-12">
+			<button type="button" class="btn btn-primary" ng-click="showNewItemForm()">Add New Content</button>
+		</p>
+	</div><!-- /.row -->
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table class="table table-bordered table-hover table-striped tablesorter">
+					<thead>
+					<tr>
+						<th>Description</th>
+						<th>Content</th>
+						<th>Options</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr ng-repeat="item in items">
+						<td>{{ item.description }}</td>
+						<td>{{ item.content }}</td>
+						<td>
+							<button class="btn btn-default" ng-click="prepareItemForm(item)"><i class="fa fa-edit"></i> Edit</button>
+							<button class="btn btn-danger" ng-click="deleteItem(item)"><i class="fa fa-eraser"></i> Delete</button>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div><!-- /.row -->
+
+	<div class="modal" id="editDialog">
+		<form role="form">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 ng-if="formMode == 'new'" class="modal-title">New Content</h4>
+						<h4 ng-if="formMode == 'edit'" class="modal-title">Edit Content</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group input-group modal-input">
+								<span class="input-group-addon">
+									Content
+								</span>
+							<textarea class="form-control" rows="3" ng-model="editedItem.content"></textarea>
+						</div>
+						<div class="form-group input-group modal-input">
+								<span class="input-group-addon">
+									Description
+								</span>
+							<textarea class="form-control" rows="3" ng-model="editedItem.description"></textarea>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" ng-click="saveItem(editedItem)"><i class="fa fa-save"></i> Save</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-ban"></i> Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</form>
+	</div><!-- /.modal -->
+</div>

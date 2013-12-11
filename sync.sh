@@ -1,0 +1,2 @@
+#!/bin/bash
+rsync -vr --delete -essh --exclude=".settings" --exclude=".buildpath" --exclude=".git" --exclude="docs" --exclude=".gitignore" --exclude=".project" --exclude="*.sh" --exclude=".DS_Store" controllers css js lib models view api.php index.html init.php view.php pawel@perla:/var/www/ap.phonegap.test/banners

@@ -1,0 +1,22 @@
+create table content(
+    id int unsigned auto_increment,
+    description text,
+    content text,
+    primary key(id)
+) engine=InnoDB;
+
+create table slot(
+    id int unsigned auto_increment,
+    description text,
+    primary key(id)
+) engine=InnoDB;
+
+create table content_slot(
+    id int unsigned auto_increment,
+    content_id int unsigned not null,
+    slot_id int unsigned not null,
+    primary key(id),
+    unique key(content_id, slot_id),
+    foreign key (slot_id) references slot(id) on delete cascade,
+    foreign key (content_id) references content(id) on delete cascade
+) engine=InnoDB;
